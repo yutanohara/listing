@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get 'users/show'
   get 'home/index'
   get 'home/show'
+  get 'home/edit'
+  get 'home/setting'
 
   root to:"home#index"
 
