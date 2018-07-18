@@ -18,3 +18,35 @@ header nav {
   float: right;
   margin-right: 100px;
 }
+
+.main-container{
+  border: solid;
+  padding: 20px;
+  width: 100%;
+  margin: auto;
+
+}
+
+.script-tag{
+  background-color: black;
+  color: white;
+}
+
+.connect-check {
+  text-align: center;
+}
+
+.connect-status {
+  margin-top: 10px;
+  background-color: #C0C0C0;
+  text-align: center;
+  padding: 10px;
+}
+
+.connect-status p {
+  font-size: 18px;
+}
+
+.connect-status p.status {
+  font-weight: bold;
+}

@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
+  get 'users/index'
+  get 'users/show'
   get 'home/index'
   get 'home/show'
 
   root to:"home#index"
 
   devise_for :users, :controllers => {
-    :registrations => 'users/registrations',
-    :sessions => 'users/sessions'
+    :registrations  => 'users/registrations',
+    :sessions       => 'users/sessions',
+    :passwords      => 'users/passwords'
   }
+  resources :users, :only => [:index, :show]
 
   devise_scope :user do
     get "sign_in", :to => "users/sessions#new"
