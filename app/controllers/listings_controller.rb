@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :set_listing, only: %i[show edit update destroy]
 
   # GET /listings
   # GET /listings.json
@@ -9,8 +9,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/1
   # GET /listings/1.json
-  def show
-  end
+  def show; end
 
   # GET /listings/new
   def new
@@ -18,8 +17,7 @@ class ListingsController < ApplicationController
   end
 
   # GET /listings/1/edit
-  def edit
-  end
+  def edit; end
 
   def registar
     @listing = Listing.new
@@ -34,6 +32,10 @@ class ListingsController < ApplicationController
     @listings = Listing.all
     @listing = nil
     # @current_listing = Listing.find_by(creative_name: params[:creative_name])
+  end
+
+  def setting
+    @listing = nil
   end
 
   # POST /listings
@@ -77,13 +79,14 @@ class ListingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_listing
-      @listing = Listing.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def listing_params
-      params.require(:listing).permit(:listing_code, :creative_name, :ad_name, :ad_parameter, :kahen_selector)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_listing
+    @listing = Listing.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def listing_params
+    params.require(:listing).permit(:listing_code, :creative_name, :ad_name, :ad_parameter, :kahen_selector)
+  end
 end

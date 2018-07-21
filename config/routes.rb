@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   get '/listings/registar' => 'listings#registar'
   get '/listings/:id/edit1' => 'listings#edit1'
-  get 'listings/options' => 'listings#options'
-  get 'listing/setting' => 'listing#setting'
+  get '/listings/options' => 'listings#options'
+  get '/listings/setting' => 'listings#setting'
   resources :listings
   get 'users/index'
   get 'users/show'
