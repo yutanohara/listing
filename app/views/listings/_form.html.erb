@@ -1,0 +1,42 @@
+<%= form_with(model: listing, local: true) do |form| %>
+  <% if listing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+
+      <ul>
+      <% listing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :listing_code %>
+    <%= form.text_field :listing_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :creative_name %>
+    <%= form.text_field :creative_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ad_name %>
+    <%= form.text_field :ad_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ad_parameter %>
+    <%= form.text_field :ad_parameter %>
+  </div>
+
+  <div class="field">
+    <%= form.label :kahen_selector %>
+    <%= form.text_field :kahen_selector %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

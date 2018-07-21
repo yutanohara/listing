@@ -21,6 +21,8 @@
         ID: <strong><%= current_user.user_id %></strong>
         <%= link_to 'プロフィール変更', edit_user_registration_path %> |
         <%= link_to "ログアウト", sign_out_path %>
+        <%= link_to "registar", "/listings/registar"%>
+        <%= link_to "registar", "/listings/options"%>
       <% else %>
         <%= link_to "サインイン", new_user_registration_path %> |
         <%= link_to "ログイン", new_user_session_path %>

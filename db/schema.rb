@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_18_042739) do
+ActiveRecord::Schema.define(version: 2018_07_21_063059) do
+
+  create_table "listings", force: :cascade do |t|
+    t.string "listing_code"
+    t.string "creative_name"
+    t.string "ad_name"
+    t.string "ad_parameter"
+    t.string "kahen_selector"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

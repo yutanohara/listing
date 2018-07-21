@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Listing code:</strong>
+  <%= @listing.listing_code %>
+</p>
+
+<p>
+  <strong>Creative name:</strong>
+  <%= @listing.creative_name %>
+</p>
+
+<p>
+  <strong>Ad name:</strong>
+  <%= @listing.ad_name %>
+</p>
+
+<p>
+  <strong>Ad parameter:</strong>
+  <%= @listing.ad_parameter %>
+</p>
+
+<p>
+  <strong>Kahen selector:</strong>
+  <%= @listing.kahen_selector %>
+</p>
+
+<%= link_to 'Edit', edit_listing_path(@listing) %> |
+<%= link_to 'Back', listings_path %>

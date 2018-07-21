@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
+  get '/listings/registar' => 'listings#registar'
+  get '/listings/:id/edit1' => 'listings#edit1'
+  get 'listings/options' => 'listings#options'
+  resources :listings
   get 'users/index'
   get 'users/show'
   get 'home/index'
   get 'home/show'
   get 'home/edit'
   get 'home/setting'
+  get 'home/tag'
 
   root to:"home#index"
 
