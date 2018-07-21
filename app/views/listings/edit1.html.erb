@@ -1,41 +1,50 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-      <% if user_signed_in? %>
-        <h1 class="text-center">リスティング可変君</h1>
-        <%= link_to "会員登録", new_user_registration_path %> |
-        <%= link_to "ログイン", new_user_session_path %> |
-        <%= link_to "ログアウト", sign_out_path %>
-        <% if defined?(@user.id) %>
-          <%= link_to "マイページ", "/users/#{@user.id}"%>
-        <% end %>
-        <ul class="list-inline list-group">
-          <li class="list-group-item"><a href="/home/tag">初期タグ</a></li>
-          <li class="list-group-item"><a href="/home/show">クリエイティブ登録</a></li>
-          <li class="list-group-item active">クリエイティブ編集</li>
-          <li class="list-group-item"><a href="/home/setting">セッティング</a></li>
-        </ul>
-        <%= form_with(model: @listing, local: true) do |form| %>
-        <div class="main-container">
-          <div class="description">
-            <p>編集したいクリエイティブを選択し、編集することが可能です。</p>
-          </div>
-          <div class="creative-name">
-            <p>クリエイティブ名</p>
-            <select name="creative">
-              <% @listings.each do |listing| %>
-                <option value="option"><%= listing.creative_name %></option>
-              <% end %>
-            </select>
-          </div>
-          <%= form.text_area :listing_code, :size => "80x10", :class => "listing-code" %>
+    <% if user_signed_in? %>
+      <h1 class="text-center">リスティング可変君</h1>
+      <%= link_to "会員登録", new_user_registration_path %>
+      |
+      <%= link_to "ログイン", new_user_session_path %>
+      |
+      <%= link_to "ログアウト", sign_out_path %>
+      <% if defined?(@user.id) %>
+        <%= link_to "マイページ", "/users/#{@user.id}"%>
+      <% end %>
+      <ul class="list-inline list-group">
+        <li class="list-group-item">
+          <a href="/home/tag">初期タグ</a>
+        </li>
+        <li class="list-group-item">
+          <a href="/home/show">クリエイティブ登録</a>
+        </li>
+        <li class="list-group-item active">クリエイティブ編集</li>
+        <li class="list-group-item">
+          <a href="/home/setting">セッティング</a>
+        </li>
+      </ul>
+      <%= form_with(model: @listing, local: true) do |form| %>
+      <div class="main-container">
+        <div class="description">
+          <p>編集したいクリエイティブを選択し、編集することが可能です。</p>
+        </div>
+        <div class="creative-name">
+          <p>クリエイティブ名</p>
+          <select name="creative">
+            <option value="“default”" selected="selected"><%= @listing.creative_name %></option>
+            <% @listings.each do |listing| %>
+              <option value="/listings/<%= listing.id %>/edit1"><%= listing.creative_name %></option>
+            <% end %>
+          </select>
+        </div>
+        <%= form.text_area :listing_code, :size => "80x10", :class => "listing-code" %>
+        <div class="right-form">
           <div class="save-delete">
-            <button type="button" name="button">上書き保存</button>
-            <button type="button" name="button">削除する</button>
+            <%= button_to '上書き保存', @listing, method: :save %>
+            <%= button_to '削除する', @listing, method: :delete, data: { confirm: '本当に削除しますか?' } %>
           </div>
         </div>
-        <% end %>
+      </div>
       <% end %>
-    </div>
+    <% end %>
   </div>
 </div>

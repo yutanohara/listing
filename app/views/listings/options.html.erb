@@ -3,17 +3,25 @@
     <div class="col-sm-6 col-sm-offset-3">
       <% if user_signed_in? %>
         <h1 class="text-center">リスティング可変君</h1>
-        <%= link_to "会員登録", new_user_registration_path %> |
-        <%= link_to "ログイン", new_user_session_path %> |
+        <%= link_to "会員登録", new_user_registration_path %>
+        |
+        <%= link_to "ログイン", new_user_session_path %>
+        |
         <%= link_to "ログアウト", sign_out_path %>
         <% if defined?(@user.id) %>
           <%= link_to "マイページ", "/users/#{@user.id}"%>
         <% end %>
         <ul class="list-inline list-group">
-          <li class="list-group-item"><a href="/home/tag">初期タグ</a></li>
-          <li class="list-group-item"><a href="/home/show">クリエイティブ登録</a></li>
+          <li class="list-group-item">
+            <a href="/home/tag">初期タグ</a>
+          </li>
+          <li class="list-group-item">
+            <a href="/home/show">クリエイティブ登録</a>
+          </li>
           <li class="list-group-item active">クリエイティブ編集</li>
-          <li class="list-group-item"><a href="/home/setting">セッティング</a></li>
+          <li class="list-group-item">
+            <a href="/home/setting">セッティング</a>
+          </li>
         </ul>
         <%= form_with(model: @listing, local: true) do |form| %>
         <div class="main-container">
@@ -23,9 +31,9 @@
           <div class="creative-name">
             <p>クリエイティブ名</p>
             <select name="creative">
-              <option value=“default” selected>選択してください</option>
+              <option value="“default”" selected="selected">選択してください</option>
               <% @listings.each do |listing| %>
-                <option value="/listings/<%= listing.id %>/edit1" ><%= listing.creative_name %></option>
+                <option value="/listings/<%= listing.id %>/edit1"><%= listing.creative_name %></option>
               <% end %>
             </select>
           </div>
@@ -35,20 +43,19 @@
             <button type="button" name="button">削除する</button>
           </div>
         </div>
-        <% end %>
       <% end %>
-    </div>
+    <% end %>
   </div>
+</div>
 </div>
 
 <script type="text/javascript">
-  $("select").click(function() {
-    var open = $(this).data("isopen");
-    if(open) {
-      window.location.href = $(this).val()
-    }
-    //set isopen to opposite so next time when use clicked select box
-    //it wont trigger this event
-    $(this).data("isopen", !open);
-  });
+$("select").click(function () {
+  var open = $(this).data("isopen");
+  if (open) {
+    window.location.href = $(this).val()
+  }
+  //set isopen to opposite so next time when use clicked select box it wont trigger this event
+  $(this).data("isopen", !open);
+});
 </script>
