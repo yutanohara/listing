@@ -1,18 +1,11 @@
+<p id="notice"><%= notice %></p>
 <div class="container">
   <div class="row">
     <% if user_signed_in? %>
       <h1 class="text-center">リスティング可変君</h1>
-      <%= link_to "会員登録", new_user_registration_path %>
-      |
-      <%= link_to "ログイン", new_user_session_path %>
-      |
-      <%= link_to "ログアウト", sign_out_path %>
-      <% if defined?(@user.id) %>
-        <%= link_to "マイページ", "/users/#{@user.id}"%>
-      <% end %>
       <ul class="list-inline list-group">
         <li class="list-group-item">
-          <a href="/home/tag">初期タグ</a>
+          <a href="/">初期タグ</a>
         </li>
         <li class="list-group-item active">クリエイティブ登録</li>
         <li class="list-group-item">

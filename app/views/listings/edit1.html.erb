@@ -1,10 +1,11 @@
+<p id="notice"><%= notice %></p>
 <div class="container">
   <div class="row">
     <% if user_signed_in? %>
       <h1 class="text-center">リスティング可変君</h1>
       <ul class="list-inline list-group">
         <li class="list-group-item">
-          <a href="/home/tag">初期タグ</a>
+          <a href="/">初期タグ</a>
         </li>
         <li class="list-group-item">
           <a href="/listings/registar">クリエイティブ登録</a>
@@ -21,12 +22,14 @@
         </div>
         <div class="creative-name">
           <p>クリエイティブ名</p>
-          <select name="creative">
-            <option value="“default”" selected="selected"><%= @listing.creative_name %></option>
+          <select name="creative" id="selector">
+            <option value="#" selected="selected"><%= @listing.creative_name %></option>
             <% @listings.each do |listing| %>
-              <option value="/listings/<%= listing.id %>/edit1"><%= listing.creative_name %></option>
+              <% if listing.listing_user == current_user.user_id %>
+                <option value="/listings/<%= listing.id %>/edit1"><%= listing.creative_name %></option>
+              <% end %>
             <% end %>
-          </select>
+          </select><br><br>
         </div>
         <%= form.text_area :listing_code, :size => "80x10", :class => "listing-code" %>
         <div class="right-form">
@@ -40,3 +43,17 @@
     <% end %>
   </div>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  // 通常DOMがすべて読み込まれた後に実行
+  $(document).on('click', '#selector', function() {
+    var open = $(this).data("isopen");
+    if (open) {
+      window.location.href = $(this).val()
+    }
+    //set isopen to opposite so next time when use clicked select box it wont trigger this event
+    $(this).data("isopen", !open);
+  })
+});
+</script>

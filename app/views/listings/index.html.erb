@@ -1,15 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listings</h1>
+<h1>リスティング一覧</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
-      <th>Listing code</th>
-      <th>Creative name</th>
-      <th>Ad name</th>
-      <th>Ad parameter</th>
-      <th>Kahen selector</th>
+      <th>クリエイティブ名</th>
+      <th>広告名</th>
+      <th>広告パラメータ</th>
+      <th>可変セレクター</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,7 +17,6 @@
     <% @listings.each do |listing| %>
       <% if listing.listing_user == current_user.user_id %>
         <tr>
-          <td><%= listing.listing_code %></td>
           <td><%= listing.creative_name %></td>
           <td><%= listing.ad_name %></td>
           <td><%= listing.ad_parameter %></td>

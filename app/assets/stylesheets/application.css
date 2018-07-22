@@ -25,6 +25,11 @@ header nav {
   margin-bottom: 10px;
 }
 
+.logo:hover {
+  color:black;
+  text-decoration: none;e
+}
+
 /* 初期タグページ */
 
 .main-container {
