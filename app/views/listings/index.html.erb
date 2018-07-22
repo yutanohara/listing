@@ -16,16 +16,18 @@
 
   <tbody>
     <% @listings.each do |listing| %>
-      <tr>
-        <td><%= listing.listing_code %></td>
-        <td><%= listing.creative_name %></td>
-        <td><%= listing.ad_name %></td>
-        <td><%= listing.ad_parameter %></td>
-        <td><%= listing.kahen_selector %></td>
-        <td><%= link_to 'Show', listing %></td>
-        <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
-        <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% if listing.listing_user == current_user.user_id %>
+        <tr>
+          <td><%= listing.listing_code %></td>
+          <td><%= listing.creative_name %></td>
+          <td><%= listing.ad_name %></td>
+          <td><%= listing.ad_parameter %></td>
+          <td><%= listing.kahen_selector %></td>
+          <td><%= link_to 'Show', listing %></td>
+          <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
+          <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

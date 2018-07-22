@@ -19,13 +19,19 @@ header nav {
   margin-right: 100px;
 }
 
+.list-inline {
+  width: 80%;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
 /* 初期タグページ */
 
 .main-container {
   border: solid;
   padding: 20px;
-  width: 100%;
-  /* margin: auto; */
+  width: 80%;
+  margin: auto;
 }
 
 .script-tag {
