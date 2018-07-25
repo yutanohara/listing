@@ -35,6 +35,7 @@ class ListingsController < ApplicationController
   end
 
   def setting
+    @listings = Listing.all
     @listing = nil
   end
 

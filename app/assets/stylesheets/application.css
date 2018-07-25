@@ -121,3 +121,57 @@ div.ad-creative {
 div.ad-selector {
   display: inline-block;
 }
+
+div.select-input {
+  display: inline;
+}
+
+/*  トグルボタン */
+div.body input[type="checkbox"].toggle-button {
+    appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    margin: 10px;
+    width: 80px;
+    height: 25px;
+    border: 0px solid rgba(0,0,0,0.0);
+    border-radius: 50px;
+    background-color: #ddd;
+    transition: background-color .4s ease;
+}
+
+div.body input[type="checkbox"].toggle-button:checked {
+    background-color: #bbb;
+}
+
+div.body input[type="checkbox"].toggle-button + label {
+    position: relative;
+    display: inline-block;
+    top: -5px;
+    left: -90px;
+    width: 35px;
+    height: 35px;
+    border: 0px solid rgba(0,0,0,0.0);
+    border-radius: 50%;
+    background-color: #eee;
+    box-shadow: 0 0 4px rgba(0,0,0,0.4);
+    transition: left .4s ease, background-color .4s ease;
+}
+
+div.body input[type="checkbox"].toggle-button:checked + label {
+    position: relative;
+    display: inline-block;
+    top: -5px;
+    left: -45px;
+    width: 35px;
+    height: 35px;
+    border: 0px solid rgba(0,0,0,0.0);
+    border-radius: 50%;
+    background-color: #00bbd3;
+    box-shadow: 0 0 4px rgba(0,0,0,0.4);
+}
+
+div.body input[type="checkbox"].toggle-button:focus {
+    outline: none;
+}

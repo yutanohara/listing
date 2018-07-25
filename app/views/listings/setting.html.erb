@@ -22,40 +22,34 @@
         <div class="ad-setting">
           <div class="ad-name">
             <p>広告名</p>
-            <input type="text" name="" value=""><br><br>
-            <input type="text" name="" value="">
+            <input type="text" name="" value=""><br>
           </div>
           <div class="ad-parameter">
             <p>広告パラメータ</p>
-            ?<input type="text" name="" value=""><br><br>
-            ?<input type="text" name="" value="">
+            ?<input type="text" name="" value=""><br>
           </div>
           <div class="ad-creative">
             <p>クリエイティブ</p>
-            <select name="creative">
-              <option value="選択肢1">選択肢1</option>
-              <option value="選択肢2">選択肢2</option>
-              <option value="選択肢3">選択肢3</option>
-            </select><br><br>
-            <select name="creative">
-              <option value="選択肢1">選択肢1</option>
-              <option value="選択肢2">選択肢2</option>
-              <option value="選択肢3">選択肢3</option>
-            </select>
+            <select name="creative" id="selector">
+              <option value="#" selected="selected">選択してください</option>
+              <% @listings.each do |listing| %>
+                <% if listing.listing_user == current_user.user_id %>
+                  <option value="/listings/<%= listing.id %>/edit1"><%= listing.creative_name %></option>
+                <% end %>
+              <% end %>
+            </select><br>
           </div>
           <div class="ad-selector">
             <p>可変セレクター</p>
-            <div class="check-selector">
-              <label><input name="selector" type="radio" id="id">id</label>
-              <label><input name="selector" type="radio" id="class">class</label>
+            <div class="select-input">
+              <div class="check-selector">
+                <label><input name="selector" type="radio" id="id">id</label>
+                <label><input name="selector" type="radio" id="class">class</label>
+              </div>
+              <input type="text" name="" value=""><br>
             </div>
-            <input type="text" name="" value=""><br><br>
-            <div class="check-selector">
-              <label><input name="selector" type="radio" id="id">id</label>
-              <label><input name="selector" type="radio" id="class">class</label>
-            </div>
-            <input type="text" name="" value="">
           </div>
+          <input type="checkbox" id="toggleButton" class="toggle-button"><label for="toggleButton"></label>
         </div>
       </div>
     <% end %>

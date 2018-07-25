@@ -48,12 +48,7 @@
 $(document).ready(function(){
   // 通常DOMがすべて読み込まれた後に実行
   $(document).on('click', '#selector', function() {
-    var open = $(this).data("isopen");
-    if (open) {
-      window.location.href = $(this).val()
-    }
-    //set isopen to opposite so next time when use clicked select box it wont trigger this event
-    $(this).data("isopen", !open);
+    window.location.href = $(this).val()
   })
 });
 </script>
