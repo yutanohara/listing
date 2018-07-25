@@ -27,7 +27,7 @@ header nav {
 
 .logo:hover {
   color:black;
-  text-decoration: none;e
+  text-decoration: none;
 }
 
 /* 初期タグページ */
@@ -105,28 +105,50 @@ header nav {
 
 /* セッティングページ*/
 
+div.ad-setting {
+  margin-top: 20px;
+}
+
 div.ad-name {
   display: inline-block;
+  vertical-align: top;
+  margin: 5px;
 }
 
 div.ad-parameter {
   display: inline-block;
+  vertical-align: top;
+  margin: 5px;
 }
 
 div.ad-creative {
   display: inline-block;
+  vertical-align: top;
+  margin: 5px;
 }
 
 
 div.ad-selector {
   display: inline-block;
+  vertical-align: top;
+  margin: 5px;
 }
 
-div.select-input {
-  display: inline;
+div.check-selector {
+  display: inline-block;
+  vertical-align: top;
+  margin: 5px;
 }
 
+.save-setting {
+  vertical-align: bottom;
+}
 /*  トグルボタン */
+div.toggle-button {
+  display: inline-block;
+  vertical-align: top;
+  margin: 5px;
+}
 div.body input[type="checkbox"].toggle-button {
     appearance: none;
     -webkit-appearance: none;

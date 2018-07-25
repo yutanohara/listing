@@ -39,6 +39,11 @@ class ListingsController < ApplicationController
     @listing = nil
   end
 
+  def setting1
+    @listings = Listing.all
+    @listing = Listing.find(params[:id])
+  end
+
   # POST /listings
   # POST /listings.json
   def create
