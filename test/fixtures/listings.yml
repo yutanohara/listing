@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  listing_code: MyString
+  creative_name: MyString
+  ad_name: MyString
+  ad_parameter: MyString
+  kahen_selector: MyString
+
+two:
+  listing_code: MyString
+  creative_name: MyString
+  ad_name: MyString
+  ad_parameter: MyString
+  kahen_selector: MyString

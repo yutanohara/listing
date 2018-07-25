@@ -2,32 +2,35 @@
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
       <% if user_signed_in? %>
-      <h1 class="text-center">リスティング可変君</h1>
-      <%= link_to "会員登録", new_user_registration_path %> |
-      <%= link_to "ログイン", new_user_session_path %> |
-      <%= link_to "ログアウト", sign_out_path %>
-      <% if defined?(@user.id) %>
-        <%= link_to "マイページ", "/users/#{@user.id}"%>
-      <% end %>
-      <ul class="list-inline list-group">
-        <li class="list-group-item"><a href="/">初期タグ</a></li>
-        <li class="list-group-item active">クリエイティブ登録</li>
-        <li class="list-group-item"><a href="/home/edit">クリエイティブ編集</a></li>
-        <li class="list-group-item"><a href="/home/setting">セッティング</a></li>
-      </ul>
-      <div class="main-container">
-        <div class="description">
-          <p>リスティング広告に対応して表示したいコードを登録して下さい。</p>
-        </div>
-        <div class="listing-code">
-          <p></p>
-        </div>
-        <div class="creative-name">
-          <p>クリエイティブ名</p>
-          <input type="text" name="" value=""><br><br>
-          <button type="button" name="button">保存</button>
-        </div>
-      </div>
+        <h1 class="text-center">リスティング可変君</h1>
+        <%= link_to "会員登録", new_user_registration_path %> |
+        <%= link_to "ログイン", new_user_session_path %> |
+        <%= link_to "ログアウト", sign_out_path %>
+        <% if defined?(@user.id) %>
+          <%= link_to "マイページ", "/users/#{@user.id}"%>
+        <% end %>
+        <ul class="list-inline list-group">
+          <li class="list-group-item"><a href="/home/tag">初期タグ</a></li>
+          <li class="list-group-item active">クリエイティブ登録</li>
+          <li class="list-group-item"><a href="/home/edit">クリエイティブ編集</a></li>
+          <li class="list-group-item"><a href="/home/setting">セッティング</a></li>
+        </ul>
+        <%= form_with(model: listing, local: true) do |form| %>
+          <div class="main-container">
+            <div class="description">
+              <p>リスティング広告に対応して表示したいコードを登録して下さい。</p>
+            </div>
+            <div class="listing-code">
+              <!-- <input class="listing-code" type="text" name="" value=""> -->
+              <textarea class="listing-code" name="code" rows="8" cols="80"></textarea>
+            </div>
+            <div class="creative-name">
+              <%= form.label "クリエイティブ名" %>
+  <%= form.text_field :listing_code %>
+              <button type="button" name="button">保存</button>
+            </div>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>

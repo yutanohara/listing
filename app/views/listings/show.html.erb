@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>リスティングコード:</strong>
+  <%= @listing.listing_code %>
+</p>
+
+<p>
+  <strong>クリエイティブ名:</strong>
+  <%= @listing.creative_name %>
+</p>
+
+<p>
+  <strong>広告名:</strong>
+  <%= @listing.ad_name %>
+</p>
+
+<p>
+  <strong>広告パラメータ:</strong>
+  <%= @listing.ad_parameter %>
+</p>
+
+<p>
+  <strong>可変セレクター:</strong>
+  <%= @listing.kahen_selector %>
+</p>
+
+<%= link_to '編集', edit_listing_path(@listing) %> |
+<%= link_to '戻る', listings_path %>

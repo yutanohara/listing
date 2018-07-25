@@ -1,0 +1,42 @@
+<%= form_with(model: listing, local: true) do |form| %>
+  <% if listing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+
+      <ul>
+      <% listing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "リスティングコード" %>
+    <%= form.text_area :listing_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label "クリエイティブ名" %>
+    <%= form.text_field :creative_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label "広告名" %>
+    <%= form.text_field :ad_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label "広告パラメータ" %>
+    <%= form.text_field :ad_parameter %>
+  </div>
+
+  <div class="field">
+    <%= form.label "可変セレクター" %>
+    <%= form.text_field :kahen_selector %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

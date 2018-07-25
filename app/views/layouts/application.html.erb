@@ -4,32 +4,35 @@
     <title>Listing</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
     <header>
-      <h2>リスティング可変君</h2>
-    <nav>
-      <!-- user_signed_in? はユーザがログインしているか調べるdeviseのHelperメソッド -->
       <% if user_signed_in? %>
-        <!-- current_user は現在ログインしているUserオブジェクトを返すdeviseのHelperメソッド -->
-        <!-- *_path はUserモデルを作成したときに、
-        deviseにより自動で作成されてますので、rake routesで確認できます -->
-        ID: <strong><%= current_user.user_id %></strong>
-        <%= link_to 'プロフィール変更', edit_user_registration_path %> |
-        <%= link_to "ログアウト", sign_out_path %>
-      <% else %>
-        <%= link_to "サインイン", new_user_registration_path %> |
-        <%= link_to "ログイン", new_user_session_path %>
-      <% end %>
-    </nav>
-  </header>
+        <a class="logo" href="/">
+          <h2>リスティング可変君</h2>
+        </a>
+        <nav>
+          <!-- user_signed_in? はユーザがログインしているか調べるdeviseのHelperメソッド -->
 
-  <!-- <p class="notice"><%= notice %></p> -->
-  <p class="alert"><%= alert %></p>
+          <!-- current_user は現在ログインしているUserオブジェクトを返すdeviseのHelperメソッド -->
+          <!-- *_path はUserモデルを作成したときに、 deviseにより自動で作成されてますので、rake routesで確認できます -->
+          ID:
+          <strong><%= link_to current_user.user_id, "/listings" %></strong>
+          <%= link_to 'プロフィール変更', edit_user_registration_path %>
+          |
+          <%= link_to "ログアウト", sign_out_path %>
+          <%= link_to "registar", "/listings/registar"%>
+          <%= link_to "registar", "/listings/options"%>
+        <% end %>
+      </nav>
+    </header>
+
+    <!-- <p class="notice"><%= notice %></p> -->
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>
