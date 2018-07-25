@@ -32,7 +32,7 @@
           <div class="ad-creative">
             <p>クリエイティブ</p>
             <select name="creative" id="selector">
-              <option value="#" selected="selected">選択してください</option>
+              <option value="#" selected="selected"><%= @listing.creative_name%></option>
               <% @listings.each do |listing| %>
                 <% if listing.listing_user == current_user.user_id %>
                   <option value="/listings/<%= listing.id %>/setting1"><%= listing.creative_name %></option>
@@ -42,13 +42,13 @@
           </div>
           <div class="check-selector">
             <p>id/class</p>
-            <label><input name="selector" type="radio" id="id">id</label>
-            <label><input name="selector" type="radio" id="class">class</label>
+            <%= radio_button 'selector', 'category', 'id', {} %>id<br>
+            <%= radio_button 'selector', 'category', 'class', {}%>class<br>
           </div>
           <div class="ad-selector">
             <p>可変セレクター</p>
             <div class="select-input">
-              <input type="text" name="" value=""><br>
+              <%= form.text_field :kahen_selector %><br>
             </div>
           </div>
           <div class="toggle-button">
