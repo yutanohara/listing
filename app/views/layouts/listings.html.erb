@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Listing</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+
+  <body>
+    <header>
+      <% if user_signed_in? %>
+        <a class="logo" href="/">
+          <h2>リスティング可変君</h2>
+        </a>
+        <nav>
+          <!-- user_signed_in? はユーザがログインしているか調べるdeviseのHelperメソッド -->
+
+          <!-- current_user は現在ログインしているUserオブジェクトを返すdeviseのHelperメソッド -->
+          <!-- *_path はUserモデルを作成したときに、 deviseにより自動で作成されてますので、rake routesで確認できます -->
+          ID:
+          <strong><%= link_to current_user.user_id, "/listings" %></strong>
+          <%= link_to 'プロフィール変更', edit_user_registration_path %>
+          |
+          <%= link_to "ログアウト", sign_out_path %>
+          <%= link_to "registar", "/listings/registar"%>
+          <%= link_to "registar", "/listings/options"%>
+        <% end %>
+      </nav>
+    </header>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <div class="container">
+      <div class="row">
+        <h1 class="text-center">リスティング可変君</h1>
+        <ul class="list-inline list-group">
+          <li class="list-group-item" value="setting"><a>初期タグ</a></li>
+          <li class="list-group-item" value="registar">クリエイティブ登録</li>
+          <li class="list-group-item" value="options">クリエイティブ編集</li>
+          <li class="list-group-item" value="setting">セッティング</li>
+        </ul>
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script type="text/javascript">
+  var url = $(location).attr('pathname').split('/')
+  $('.list-group-item').each(function(){
+      if($(this).attr('value') == url[2]){
+        $(this).addClass('active')
+      }
+  })
+  $('.list-group-item').on('click', function () {
+    window.location.href = '/listings/' + $(this).attr('value')
+  })
+</script>
