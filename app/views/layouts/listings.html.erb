@@ -36,7 +36,7 @@
       <div class="row">
         <h1 class="text-center">リスティング可変君</h1>
         <ul class="list-inline list-group">
-          <li class="list-group-item" value="setting"><a>初期タグ</a></li>
+          <li class="list-group-item" value="setting">初期タグ</li>
           <li class="list-group-item" value="registar">クリエイティブ登録</li>
           <li class="list-group-item" value="options">クリエイティブ編集</li>
           <li class="list-group-item" value="setting">セッティング</li>
@@ -48,13 +48,23 @@
 </html>
 
 <script type="text/javascript">
+  // listのactive化
   var url = $(location).attr('pathname').split('/')
-  $('.list-group-item').each(function(){
-      if($(this).attr('value') == url[2]){
-        $(this).addClass('active')
-      }
+  $('.list-group-item').each(function () {
+    if ($(this).attr('value') == url[2]) {
+      $(this).addClass('active')
+    }
   })
+  // リストクリックで画面遷移
   $('.list-group-item').on('click', function () {
     window.location.href = '/listings/' + $(this).attr('value')
   })
+
+  // セレクターの挙動
+  $(document).ready(function () {
+    // 通常DOMがすべて読み込まれた後に実行
+    $(document).on('click', '#selector', function () {
+      window.location.href = $(this).val()
+    })
+  });
 </script>

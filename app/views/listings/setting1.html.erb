@@ -1,74 +1,46 @@
-<div class="container">
-  <div class="row">
-    <% if user_signed_in? %>
-      <h1 class="text-center">リスティング可変君</h1>
-      <ul class="list-inline list-group">
-        <li class="list-group-item">
-          <a href="/">初期タグ</a>
-        </li>
-        <li class="list-group-item">
-          <a href="/listings/registar">クリエイティブ登録</a>
-        </li>
-        <li class="list-group-item">
-          <a href="/listings/options">クリエイティブ編集</a>
-        </li>
-        <li class="list-group-item active">セッティング</li>
-      </ul>
-      <div class="main-container">
-        <div class="description">
-          <p>広告URLとクリエイティブを紐付けてください。</p>
-          <p>「囲うdivタグ」を可変させたいエリアに囲うと、囲った中は非表示となり、代わりに対応するクリエイティブが表示されます。</p>
-        </div>
-        <%= form_with(model: @listing, local: true) do |form| %>
-        <div class="ad-setting">
-          <div class="ad-name">
-            <p>広告名</p>
-            <%= form.text_field :ad_name %><br>
-          </div>
-          <div class="ad-parameter">
-            <p>広告パラメータ</p>
-            ?<%= form.text_field :ad_parameter %><br>
-          </div>
-          <div class="ad-creative">
-            <p>クリエイティブ</p>
-            <select name="creative" id="selector">
-              <option value="#" selected="selected"><%= @listing.creative_name%></option>
-              <% @listings.each do |listing| %>
-                <% if listing.listing_user == current_user.user_id %>
-                  <option value="/listings/<%= listing.id %>/setting1"><%= listing.creative_name %></option>
-                <% end %>
-              <% end %>
-            </select><br>
-          </div>
-          <div class="check-selector">
-            <p>id/class</p>
-            <%= radio_button 'selector', 'category', 'id', {} %>id<br>
-            <%= radio_button 'selector', 'category', 'class', {}%>class<br>
-          </div>
-          <div class="ad-selector">
-            <p>可変セレクター</p>
-            <div class="select-input">
-              <%= form.text_field :kahen_selector %><br>
-            </div>
-          </div>
-          <div class="toggle-button">
-            <p>On/Off</p>
-            <input type="checkbox" id="toggleButton" class="toggle-button">
-            <label for="toggleButton"></label>
-          </div>
-          <button type="submit" name="button" class="save-setting">保存</button>
-        </div>
-        <% end %>
-      </div>
-    <% end %>
+<div class="main-container">
+  <div class="description">
+    <p>広告URLとクリエイティブを紐付けてください。</p>
+    <p>「囲うdivタグ」を可変させたいエリアに囲うと、囲った中は非表示となり、代わりに対応するクリエイティブが表示されます。</p>
   </div>
+  <%= form_with(model: @listing, local: true) do |form| %>
+  <div class="ad-setting">
+    <div class="ad-name">
+      <p>広告名</p>
+      <%= form.text_field :ad_name %><br>
+    </div>
+    <div class="ad-parameter">
+      <p>広告パラメータ</p>
+      ?<%= form.text_field :ad_parameter %><br>
+    </div>
+    <div class="ad-creative">
+      <p>クリエイティブ</p>
+      <select name="creative" id="selector">
+        <option value="#" selected="selected"><%= @listing.creative_name%></option>
+        <% @listings.each do |listing| %>
+          <% if listing.listing_user == current_user.user_id %>
+            <option value="/listings/<%= listing.id %>/setting1"><%= listing.creative_name %></option>
+          <% end %>
+        <% end %>
+      </select><br>
+    </div>
+    <div class="check-selector">
+      <p>id/class</p>
+      <%= radio_button 'selector', 'category', 'id', {} %>id<br>
+      <%= radio_button 'selector', 'category', 'class', {}%>class<br>
+    </div>
+    <div class="ad-selector">
+      <p>可変セレクター</p>
+      <div class="select-input">
+        <%= form.text_field :kahen_selector %><br>
+      </div>
+    </div>
+    <div class="toggle-button">
+      <p>On/Off</p>
+      <input type="checkbox" id="toggleButton" class="toggle-button">
+      <label for="toggleButton"></label>
+    </div>
+    <button type="submit" name="button" class="save-setting">保存</button>
+  </div>
+<% end %>
 </div>
-
-<script type="text/javascript">
-$(document).ready(function () {
-  // 通常DOMがすべて読み込まれた後に実行
-  $(document).on('click', '#selector', function () {
-    window.location.href = $(this).val()
-  })
-});
-</script>

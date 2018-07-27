@@ -17,12 +17,3 @@
   <%= form.text_area :listing_code, :size => "80x10", :class => "listing-code" %><br><br>
 </div>
 <% end %>
-
-<script type="text/javascript">
-$(document).ready(function () {
-  // 通常DOMがすべて読み込まれた後に実行
-  $(document).on('click', '#selector', function () {
-    window.location.href = $(this).val()
-  })
-});
-</script>

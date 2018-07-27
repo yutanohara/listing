@@ -51,7 +51,7 @@ class ListingsController < ApplicationController
     @listing.listing_user = current_user.user_id
     respond_to do |format|
       if @listing.save
-        format.html { redirect_to '/listings/registar', notice: 'クリエイティブを登録しました。' }
+        format.html { redirect_back fallback_location: root_path, notice: 'クリエイティブを登録しました。' }
         format.json { render :show, status: :created, location: @listing }
       else
         format.html { render :new }
@@ -65,7 +65,7 @@ class ListingsController < ApplicationController
   def update
     respond_to do |format|
       if @listing.update(listing_params)
-        format.html { redirect_to "/listings/#{@listing.id}/edit1", notice: 'クリエイティブを編集しました。' }
+        format.html { redirect_back fallback_location: root_path, notice: 'クリエイティブを編集しました。' }
         format.json { render :show, status: :ok, location: @listing }
       else
         format.html { render :edit }
