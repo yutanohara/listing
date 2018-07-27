@@ -1,19 +1,16 @@
-<%= form_with(model: @listing, local: true) do |form| %>
-<div class="main-container">
-  <div class="description">
-    <p>編集したいクリエイティブを選択し、編集することが可能です。</p>
-  </div>
-  <div class="creative-name">
-    <p>クリエイティブ名</p>
-    <select name="creative" id="selector">
-      <option value="#" selected="selected">選択してください</option>
-      <% @listings.each do |listing| %>
-        <% if listing.listing_user == current_user.user_id %>
-          <option value="/listings/<%= listing.id %>/edit1"><%= listing.creative_name %></option>
-        <% end %>
+<div class="creative-name">
+  <p>クリエイティブ名</p>
+  <select name="creative" id="selector">
+    <option value="#" selected="selected">選択してください</option>
+    <% @listings.each do |listing| %>
+      <% if listing.listing_user == current_user.user_id %>
+        <option value="/listings/<%= listing.id %>/edit1"><%= listing.creative_name %></option>
       <% end %>
-    </select><br><br>
-  </div>
-  <%= form.text_area :listing_code, :size => "80x10", :class => "listing-code" %><br><br>
+    <% end %>
+  </select><br><br>
 </div>
-<% end %>
+<%= render partial: 'option', listing: @listing %>
+
+<script type="text/javascript">
+$('p.descrive').html("編集したいクリエイティブを選択し、編集することが可能です。")
+</script>

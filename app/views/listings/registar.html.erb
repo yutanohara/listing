@@ -1,17 +1,15 @@
 <%= form_with(model: @listing, local: true) do |form| %>
-<div class="main-container">
-  <div class="description">
-    <p>リスティング広告に対応して表示したいコードを登録して下さい。</p>
-  </div>
-  <div class="listing-code">
-    <%= form.text_area :listing_code, :size => "80x10", :class => "listing-code" %>
-  </div>
-  <div class="right-form">
-    <div class="creative-name">
-      クリエイティブ名 :
-      <%= form.text_field :creative_name %><br><br>
-      <button type="submit" name="button">保存</button>
-    </div>
-  </div>
+<div class="listing-code">
+<%= form.text_area :listing_code, :size => "80x10", :class => "listing-code" %>
+</div>
+<div class="right-form">
+<div class="creative-name">
+  クリエイティブ名 :
+  <%= form.text_field :creative_name %><br><br>
+  <button type="submit" name="button">保存</button>
 </div>
 <% end %>
+
+<script type="text/javascript">
+$('p.descrive').html("リスティング広告に対応して表示したいコードを登録して下さい。")
+</script>

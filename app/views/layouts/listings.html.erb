@@ -41,7 +41,12 @@
           <li class="list-group-item" value="options">クリエイティブ編集</li>
           <li class="list-group-item" value="setting">セッティング</li>
         </ul>
-        <%= yield %>
+        <div class="main-container">
+          <div class="description">
+            <p class="descrive"></p>
+          </div>
+          <%= yield %>
+        </div>
       </div>
     </div>
   </body>
@@ -59,12 +64,11 @@
   $('.list-group-item').on('click', function () {
     window.location.href = '/listings/' + $(this).attr('value')
   })
-
   // セレクターの挙動
   $(document).ready(function () {
     // 通常DOMがすべて読み込まれた後に実行
     $(document).on('click', '#selector', function () {
       window.location.href = $(this).val()
     })
-  });
+  })
 </script>

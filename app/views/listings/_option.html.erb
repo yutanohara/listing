@@ -1,0 +1,9 @@
+<%= form_with(model: @listing, local: true, data: {remote: true}) do |form| %>
+<%= form.text_area :listing_code, :size => "80x10", :class => "listing-code" %>
+<div class="right-form">
+  <div class="save-delete">
+    <%= button_to '上書き保存', @listing, method: :save %>
+    <%= button_to '削除する', @listing, method: :delete, data: { confirm: '本当に削除しますか?' } %>
+  </div>
+</div>
+<% end  %>

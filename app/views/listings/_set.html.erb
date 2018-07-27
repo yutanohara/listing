@@ -1,0 +1,29 @@
+<%= form_with(model: @listing, local: true, data: {remote: true}) do |form| %>
+<div class="ad-setting">
+  <div class="ad-name">
+    <p>広告名</p>
+    <%= form.text_field :ad_name %><br>
+  </div>
+  <div class="ad-parameter">
+    <p>広告パラメータ</p>
+    ?<%= form.text_field :ad_parameter %><br>
+  </div>
+  <div class="check-selector">
+    <p>id/class</p>
+    <%= radio_button 'selector', 'category', 'id', {} %>id<br>
+    <%= radio_button 'selector', 'category', 'class', {}%>class<br>
+  </div>
+  <div class="ad-selector">
+    <p>可変セレクター</p>
+    <div class="select-input">
+      <%= form.text_field :kahen_selector %><br>
+    </div>
+  </div>
+  <div class="toggle-button">
+    <p>On/Off</p>
+    <input type="checkbox" id="toggleButton" class="toggle-button">
+    <label for="toggleButton"></label>
+  </div>
+  <button type="submit" name="button" class="save-setting">保存</button>
+</div>
+<% end %>
