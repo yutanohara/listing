@@ -21,9 +21,21 @@
   </div>
   <div class="toggle-button">
     <p>On/Off</p>
-    <input type="checkbox" id="toggleButton" class="toggle-button">
-    <label for="toggleButton"></label>
+    <div class="btn-group btn-toggle">
+      <button class="btn btn-primary">ON</button>
+      <button class="btn btn-default">OFF</button>
+    </div>
   </div>
   <button type="submit" name="button" class="save-setting">保存</button>
 </div>
 <% end %>
+
+<script type="text/javascript">
+$('.btn-toggle').on('click', function () {
+  $(this).find('.btn').toggleClass('active');
+  if ($(this).find('.btn-primary').size() > 0) {
+    $(this).find('.btn').toggleClass('btn-primary');
+  }
+  $(this).find('.btn').toggleClass('btn-default');
+});
+</script>
