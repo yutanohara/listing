@@ -20,6 +20,8 @@ class ListingsController < ApplicationController
   # GET /listings/1/edit
   def edit; end
 
+  def tag; end
+
   def registar
     @listing = Listing.new
   end
