@@ -6,17 +6,19 @@
     </button>
     <h4 class="modal-title" id="modal-label">下記のコードをコピーしてブラウザのコンソールに貼り付けてください</h4>
   </div>
+  <button type="button" id="copy-button" class="btn btn-default">コピー</button>
   <!-- 5.モーダルのボディ -->
-  <div class="modal-body" id="copyTarget">
-    (function() { alert('可変させたい要素をクリックして選択してください\nもう一度クリックするとデータを送信します') function color(content) { content.style['background-color'] = 'rgb(255,0,0)' } function uncolor(content) { if (content) content.style['background-color'] = '' } function hash(str) {
-    return str.substr(0, 10) } function send(data) { const url = '/listings/data' if (!data) { alert('要素が選択されてません') return } function XMLHttpRequestCreate() { try { return new XMLHttpRequest(); } catch (e) {} try { return new
-    ActiveXObject('MSXML2.XMLHTTP.6.0'); } catch (e) {} try { return new ActiveXObject('MSXML2.XMLHTTP.3.0'); } catch (e) {} try { return new ActiveXObject('MSXML2.XMLHTTP'); } catch (e) {} return null; } const xhr = XMLHttpRequestCreate()
-    xhr.onreadystatechange = () => { if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) { alert('送信しました') } } xhr.open('POST', url) xhr.setRequestHeader('Content-Type', 'application/json'); xhr.send(data) } let content = null let data =
-    {} document.addEventListener('click', e => { if (content === e.target) { uncolor(content) if (!window.confirm('要素: ' + content.outerHTML.substr(0, 10) + '...を可変にしますか?')) { return } const location = [] let now = content while (now.parentElement) { for
-    (let i = 0; i < now.parentElement.children.length; i++) { if (now.parentElement.children[i] === now) { now = now.parentElement location.unshift(i) break; } } } const h = hash(content.innerHTML) const data = { host: window.location.origin, path:
-    window.location.pathname, hash: h, location: location } send(JSON.stringify(data)) } else { uncolor(content) content = e.target color(content) } }) })()
+  <div class="modal-body">
+    <textarea id="copyForm" rows="8" cols="80" readonly="readonly">
+      (function() { alert('可変させたい要素をクリックして選択してください\nもう一度クリックするとデータを送信します'); function color(content) { content.style['background-color'] = 'rgb(255,0,0)'; } function uncolor(content) { if (content) content.style['background-color'] = ''; } function
+      hash(str) { return str.substr(0, 10); } function send(data) { const url = '/listings/data.json'; if (!data) { alert('要素が選択されてません'); return; } function XMLHttpRequestCreate() { try { return new XMLHttpRequest(); } catch (e) {} try { return new
+      ActiveXObject('MSXML2.XMLHTTP.6.0'); } catch (e) {} try { return new ActiveXObject('MSXML2.XMLHTTP.3.0'); } catch (e) {} try { return new ActiveXObject('MSXML2.XMLHTTP'); } catch (e) {} return null; } const xhr = XMLHttpRequestCreate();
+      xhr.onreadystatechange = () => { if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) { alert('送信しました'); } }; xhr.open('POST', url); xhr.setRequestHeader('Content-Type', 'application/json'); xhr.send(data); } let content = null; let
+      data = {}; document.addEventListener('click', e => { if (content === e.target) { uncolor(content); if (!window.confirm('要素: ' + content.outerHTML.substr(0, 10) + '...を可変にしますか?')) { return; } const location = []; let now = content; while
+      (now.parentElement) { for (let i = 0; i < now.parentElement.children.length; i++) { if (now.parentElement.children[i] === now) { now = now.parentElement; location.unshift(i); break; } } } const h = hash(content.innerHTML); const data = { host:
+      window.location.origin, path: window.location.pathname, hash: h, location: location }; send(JSON.stringify(data)); } else { uncolor(content); content = e.target; color(content); } }); })();
+    </textarea>
   </div>
-  <button class="copy-button">コピー</button>
   <!-- 6.モーダルのフッタ -->
   <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
@@ -24,22 +26,12 @@
 </div>
 
 <script type="text/javascript">
-  $('.copy-button').on("click", function(){
-    var text = document.getElementById('copyTarget').firstChild["data"]
-    text[0].select()
-    document.execCommand('copy')
-    alert('hello')
+  $('#copy-button').on('click', function () {
+    var text = document.getElementById('copyForm')
+    text.select()
+    var suc = document.execCommand('copy')
+    if (suc) {
+      alert('コピーしました。')
+    }
   })
-  function copyToClipboard() {
-    // コピー対象をJavaScript上で変数として定義する
-    // var copyTarget = document.getElementById("copyTarget");
-    // // コピー対象のテキストを選択する
-    // copyTarget.firstChild["data"].select()
-    var text = document.getElementById('copyTarget').firstChild["data"]
-    document.execCommand("Copy");
-      // コピーをお知らせする
-    alert("コピーできました！ : " + copyTarget.value);
-
-    // 選択しているテキストをクリップボードにコピーする
-  }
 </script>

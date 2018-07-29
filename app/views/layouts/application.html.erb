@@ -24,13 +24,10 @@
           <%= link_to 'プロフィール変更', edit_user_registration_path %>
           |
           <%= link_to "ログアウト", sign_out_path %>
-          <%= link_to "registar", "/listings/registar"%>
-          <%= link_to "registar", "/listings/options"%>
         <% end %>
       </nav>
     </header>
-
-    <!-- <p class="notice"><%= notice %></p> -->
+    <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
