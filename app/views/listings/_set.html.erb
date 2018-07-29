@@ -8,15 +8,17 @@
     <p>広告パラメータ</p>
     ?<%= form.text_field :ad_parameter %><br>
   </div>
-  <div class="check-selector">
-    <p>id/class</p>
-    <%= radio_button 'selector', 'category', 'id', {} %>id<br>
-    <%= radio_button 'selector', 'category', 'class', {}%>class<br>
-  </div>
   <div class="ad-selector">
     <p>可変セレクター</p>
-    <div class="select-input">
-      <%= form.text_field :kahen_selector %><br>
+    <button class="btn btn-primary" data-toggle="modal" data-target="#modal-sample">
+      登録する
+    </button>
+    <div class="modal" id="modal-sample" tabindex="-1">
+      <div class="modal-dialog">
+        <%= render partial: 'picker' %>
+        <!-- 3.モーダルのコンテンツ -->
+
+      </div>
     </div>
   </div>
   <div class="toggle-button">
@@ -26,7 +28,11 @@
       <button class="btn btn-default">OFF</button>
     </div>
   </div>
-  <button type="submit" name="button" class="save-setting">保存</button>
+  <div class="right-form">
+    <div class="save-delete">
+      <button type="submit" name="button" class="btn btn-primary save-setting">保存</button>
+    </div>
+  </div>
 </div>
 <% end %>
 
