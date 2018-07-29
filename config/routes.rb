@@ -8,9 +8,8 @@ Rails.application.routes.draw do
   resources :listings
   get 'users/index'
   get 'users/show'
-  get 'home/index'
 
-  root to: 'home#index'
+  root to: 'listings#tag'
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',

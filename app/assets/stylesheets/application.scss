@@ -87,6 +87,7 @@ header nav {
 .creative-name select {
   width: 25%;
   padding: 10px;
+  border-radius: 10px;
   -webkit-appearance: none;
   -moz-appearance: none;
   /* appearance: none; */
@@ -129,6 +130,12 @@ div.ad-selector {
 }
 
 div.check-selector {
+  display: inline-block;
+  vertical-align: top;
+  margin: 5px;
+}
+
+div.toggle-button {
   display: inline-block;
   vertical-align: top;
   margin: 5px;
