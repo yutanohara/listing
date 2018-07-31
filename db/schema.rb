@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_25_014931) do
+ActiveRecord::Schema.define(version: 2018_07_30_142246) do
+
+  create_table "apis", force: :cascade do |t|
+    t.string "host"
+    t.string "path"
+    t.string "hash_i"
+    t.string "location"
+    t.integer "listing"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "listings", force: :cascade do |t|
     t.string "listing_code"

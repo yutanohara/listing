@@ -8,10 +8,10 @@
   </div>
   <button type="button" id="copy-button" class="btn btn-default">コピー</button>
   <!-- 5.モーダルのボディ -->
-  <div class="modal-body">
-    <textarea id="copyForm" rows="8" cols="80" readonly="readonly">
+  <div class="modal-body" >
+    <textarea id="copyForm" rows="8" cols="80" readonly="readonly" style="width:100%;margin:auto;">
       (function() { alert('可変させたい要素をクリックして選択してください\nもう一度クリックするとデータを送信します'); function color(content) { content.style['background-color'] = 'rgb(255,0,0)'; } function uncolor(content) { if (content) content.style['background-color'] = ''; } function
-      hash(str) { return str.substr(0, 10); } function send(data) { const url = '/listings/data.json'; if (!data) { alert('要素が選択されてません'); return; } function XMLHttpRequestCreate() { try { return new XMLHttpRequest(); } catch (e) {} try { return new
+      hash(str) { return str.substr(0, 10); } function send(data) { const url = '/apis'; if (!data) { alert('要素が選択されてません'); return; } function XMLHttpRequestCreate() { try { return new XMLHttpRequest(); } catch (e) {} try { return new
       ActiveXObject('MSXML2.XMLHTTP.6.0'); } catch (e) {} try { return new ActiveXObject('MSXML2.XMLHTTP.3.0'); } catch (e) {} try { return new ActiveXObject('MSXML2.XMLHTTP'); } catch (e) {} return null; } const xhr = XMLHttpRequestCreate();
       xhr.onreadystatechange = () => { if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) { alert('送信しました'); } }; xhr.open('POST', url); xhr.setRequestHeader('Content-Type', 'application/json'); xhr.send(data); } let content = null; let
       data = {}; document.addEventListener('click', e => { if (content === e.target) { uncolor(content); if (!window.confirm('要素: ' + content.outerHTML.substr(0, 10) + '...を可変にしますか?')) { return; } const location = []; let now = content; while
