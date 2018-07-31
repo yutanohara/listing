@@ -122,8 +122,13 @@ div.ad-creative {
   margin: 5px;
 }
 
-
 div.ad-selector {
+  display: inline-block;
+  vertical-align: top;
+  margin: 5px;
+}
+
+div.ad-json {
   display: inline-block;
   vertical-align: top;
   margin: 5px;
