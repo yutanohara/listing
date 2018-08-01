@@ -4,7 +4,7 @@
 
   function envalue(terms, params) {
     let ret
-    if (terms['op']) {
+    if (terms['op'] !== undefined) {
       if (terms['op'] === 'and') {
         ret = true
         terms.terms.forEach(term => {
@@ -48,22 +48,28 @@
       return
     }
     const params = paramParse(window.location.search)
-    k.ad_parameter.forEach(r => {
-      if (!envalue(r.ad_parameter, params)) return
-      const html = document.querySelector('html')
-      let tmp = html
-      try {
-        for (let i = 0; i < r.location.length; i++) tmp = tmp.children[r.location[i]]
-      } catch (e) {
-        errorReport('親のDOM構造が変化しています')
-        return
-      }
-      if (hash(tmp.innerHTML) !== r.hash_i) {
-        errorReport('ターゲットの内部が変化しています')
-        return
-      }
-      tmp.outerHTML = r.rep
-    })
+    console.log(envalue(conf.ad_parameter, params))
+    if (window.location.search.substr(1) !== conf.ad_parameter) return
+    const html = document.querySelector('html')
+    let tmp = html
+    for (let i = 0; i < k.location.length; i++) tmp = tmp.children[k.location[i]]
+    tmp.outerHTML = conf.listing_code
+    // k.ad_parameter.forEach(r => {
+    //   if (!envalue(r.ad_parameter, params)) return
+    //   const html = document.querySelector('html')
+    //   let tmp = html
+    //   try {
+    //     for (let i = 0; i < r.location.length; i++) tmp = tmp.children[r.location[i]]
+    //   } catch (e) {
+    //     errorReport('親のDOM構造が変化しています')
+    //     return
+    //   }
+    //   if (hash(tmp.innerHTML) !== r.hash_i) {
+    //     errorReport('ターゲットの内部が変化しています')
+    //     return
+    //   }
+    //   tmp.outerHTML = r.rep
+    // })
   }
 
   function XMLHttpRequestCreate() {
@@ -83,7 +89,7 @@
   }
 
   function get(c) {
-    const url = 'http://localhost:3000/listings/59.json'
+    const url = 'http://localhost:3000/listings/2.json'
     const xhr = XMLHttpRequestCreate()
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) {
