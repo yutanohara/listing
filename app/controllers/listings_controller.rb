@@ -83,7 +83,7 @@ class ListingsController < ApplicationController
   def destroy
     @listing.destroy
     respond_to do |format|
-      format.html { redirect_to '/listings/options', notice: 'クリエイティブを削除しました。' }
+      format.html { redirect_back fallback_location: root_path, notice: 'クリエイティブを削除しました。' }
       format.json { head :no_content }
     end
   end
