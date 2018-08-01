@@ -40,36 +40,22 @@
   }
 
   function script(conf) {
-    const l = conf.kahen_selector.replace(/\\/g, '');
-    const k = JSON.parse(l)
-    console.log(k.host)
-    if (window.location.origin !== k.host || window.location.pathname !== k.path) {
-      errorReport('URLが異なります')
-      return
+    for(let i = 0; i < conf.length; i++) {
+      const l = conf[i].kahen_selector.replace(/\\/g, '');
+      const k = JSON.parse(l)
+      console.log(k.host)
+      if (window.location.origin !== k.host || window.location.pathname !== k.path) {
+        // errorReport('URLが異なります')
+        continue
+      }
+      const params = paramParse(window.location.search)
+      console.log(envalue(conf[i].ad_parameter, params))
+      if (window.location.search.substr(1) !== conf[i].ad_parameter) continue
+      const html = document.querySelector('html')
+      let tmp = html
+      for (let i = 0; i < k.location.length; i++) tmp = tmp.children[k.location[i]]
+      tmp.outerHTML = conf[i].listing_code
     }
-    const params = paramParse(window.location.search)
-    console.log(envalue(conf.ad_parameter, params))
-    if (window.location.search.substr(1) !== conf.ad_parameter) return
-    const html = document.querySelector('html')
-    let tmp = html
-    for (let i = 0; i < k.location.length; i++) tmp = tmp.children[k.location[i]]
-    tmp.outerHTML = conf.listing_code
-    // k.ad_parameter.forEach(r => {
-    //   if (!envalue(r.ad_parameter, params)) return
-    //   const html = document.querySelector('html')
-    //   let tmp = html
-    //   try {
-    //     for (let i = 0; i < r.location.length; i++) tmp = tmp.children[r.location[i]]
-    //   } catch (e) {
-    //     errorReport('親のDOM構造が変化しています')
-    //     return
-    //   }
-    //   if (hash(tmp.innerHTML) !== r.hash_i) {
-    //     errorReport('ターゲットの内部が変化しています')
-    //     return
-    //   }
-    //   tmp.outerHTML = r.rep
-    // })
   }
 
   function XMLHttpRequestCreate() {
@@ -89,12 +75,13 @@
   }
 
   function get(c) {
-    const url = 'http://localhost:3000/listings/2.json'
+    const url = 'http://localhost:3000/listings.json'
     const xhr = XMLHttpRequestCreate()
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) {
         console.log(xhr.responseText)
-        c(JSON.parse(xhr.responseText))
+        const text = JSON.parse(xhr.responseText)
+        c(text)
         // c(JSON.parse(xhr.responseText.kahen_selector))
       }
     }
