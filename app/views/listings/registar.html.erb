@@ -1,4 +1,4 @@
-<%= form_with(model: @listing, local: true) do |form| %>
+<%= form_with(model: @listing, local: true, multipart: true) do |form| %>
 <div class="listing-code">
 <%= form.text_area :listing_code, :size => "80x10", :class => "listing-code" %>
 </div>
@@ -6,6 +6,7 @@
 <div class="creative-name">
   クリエイティブ名 :
   <%= form.text_field :creative_name %><br><br>
+  <input type="file" name="image"><br>
   <button type="submit" name="button" class="btn btn-primary">保存</button>
 </div>
 <% end %>

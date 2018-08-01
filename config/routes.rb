@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/listings/setting' => 'listings#setting'
   get '/listings/:id/setting1' => 'listings#setting1'
   get '/listings/tag' => 'listings#tag'
+  get 'listings/data' => 'listings#data'
   resources :listings
   get 'users/index'
   get 'users/show'
