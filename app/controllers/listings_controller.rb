@@ -28,25 +28,18 @@ class ListingsController < ApplicationController
     @listing = Listing.new
   end
 
-  def edit1
-    @listings = Listing.all
-    @listing = Listing.find(params[:id])
-  end
-
   def options
     @listings = Listing.all
-    @listing = nil
-    # @current_listing = Listing.find_by(creative_name: params[:creative_name])
+    if params[:id]
+      @listing = Listing.find(params[:id])
+    end
   end
 
   def setting
     @listings = Listing.all
-    @listing = nil
-  end
-
-  def setting1
-    @listings = Listing.all
-    @listing = Listing.find(params[:id])
+    if params[:id]
+      @listing = Listing.find(params[:id])
+    end
   end
 
   # POST /listings
@@ -56,7 +49,7 @@ class ListingsController < ApplicationController
     @listing.listing_user = current_user.user_id
     if params[:image]
       image = params[:image]
-      File.binwrite("public/img/b.jpeg", image.read)
+      File.binwrite('public/img/b.jpeg', image.read)
     end
     respond_to do |format|
       if @listing.save

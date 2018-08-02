@@ -6,10 +6,6 @@ Rails.application.routes.draw do
       get 'setting'
       get 'tag'
     end
-    member do
-      get 'edit1'
-      get 'setting1'
-    end
   end
 
   root to: 'listings#tag'

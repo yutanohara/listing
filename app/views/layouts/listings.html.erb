@@ -69,11 +69,15 @@
   $('.list-group-item').on('click', function () {
     window.location.href = '/listings/' + $(this).attr('value')
   })
+  if (window.location.search != null) {
+    $('.list-group-item').addClass('selected')
+  }
   // セレクターの挙動
   $(document).ready(function () {
-    // 通常DOMがすべて読み込まれた後に実行
     $(document).on('click', '#selector', function () {
-      window.location.href = $(this).val()
+      if ($(this).val()) {
+        window.location.search = 'id=' + $(this).val()
+      }
     })
   })
 </script>
