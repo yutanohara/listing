@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       get 'options'
       get 'setting'
       get 'tag'
+      get 'data'
     end
   end
 

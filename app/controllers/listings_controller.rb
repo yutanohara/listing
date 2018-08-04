@@ -47,10 +47,6 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
     @listing.listing_user = current_user.user_id
-    if params[:image]
-      image = params[:image]
-      File.binwrite('public/img/b.jpeg', image.read)
-    end
     respond_to do |format|
       if @listing.save
         format.html { redirect_back fallback_location: root_path, notice: 'クリエイティブを登録しました。' }
