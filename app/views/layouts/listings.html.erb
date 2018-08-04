@@ -29,7 +29,7 @@
         <div class="row">
           <h1 class="text-center">リスティング可変君</h1>
           <ul class="list-inline list-group">
-            <li class="list-group-item" value="tag">初期タグ</li>
+            <li id="list-tag" class="list-group-item" value="tag">初期タグ</li>
             <li class="list-group-item" value="registar">クリエイティブ登録</li>
             <li class="list-group-item" value="options">クリエイティブ編集</li>
             <li class="list-group-item" value="setting">セッティング</li>
@@ -58,6 +58,9 @@
 </html>
 
 <script type="text/javascript">
+  if (window.location.pathname == "/"){
+    $('#list-tag').addClass('active')
+  }
   // listのactive化
   var url = $(location).attr('pathname').split('/')
   $('.list-group-item').each(function () {
@@ -69,11 +72,15 @@
   $('.list-group-item').on('click', function () {
     window.location.href = '/listings/' + $(this).attr('value')
   })
+  if (window.location.search != null) {
+    $('.list-group-item').addClass('selected')
+  }
   // セレクターの挙動
   $(document).ready(function () {
-    // 通常DOMがすべて読み込まれた後に実行
     $(document).on('click', '#selector', function () {
-      window.location.href = $(this).val()
+      if ($(this).val()) {
+        window.location.search = 'id=' + $(this).val()
+      }
     })
   })
 </script>

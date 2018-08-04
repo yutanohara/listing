@@ -1,10 +1,14 @@
 <div class="creative-name">
   <p>クリエイティブ名</p>
   <select name="creative" id="selector">
-    <option value="#" selected="selected">選択してください</option>
+    <% if  params[:id] %>
+      <option value="" selected="selected"><%= @listing.creative_name %></option>
+    <% else %>
+      <option value="" selected="selected">選択してください</option>
+    <% end %>
     <% @listings.each do |listing| %>
       <% if listing.listing_user == current_user.user_id %>
-        <option value="/listings/<%= listing.id %>/setting1"><%= listing.creative_name %></option>
+        <option value="<%= listing.id %>"><%= listing.creative_name %></option>
       <% end %>
     <% end %>
   </select><br><br>

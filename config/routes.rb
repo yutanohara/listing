@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-  get '/listings/registar' => 'listings#registar'
-  get '/listings/:id/edit1' => 'listings#edit1'
-  get '/listings/options' => 'listings#options'
-  get '/listings/setting' => 'listings#setting'
-  get '/listings/:id/setting1' => 'listings#setting1'
-  get '/listings/tag' => 'listings#tag'
-  resources :listings
-  get 'users/index'
-  get 'users/show'
+  resources :listings do
+    collection do
+      get 'registar'
+      get 'options'
+      get 'setting'
+      get 'tag'
+      get 'data'
+    end
+  end
 
   root to: 'listings#tag'
 

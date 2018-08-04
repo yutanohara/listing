@@ -1,6 +1,7 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: %i[show edit update destroy]
   before_action :authenticate_user!, except: [:tag]
+  protect_from_forgery except: [:data]
 
   # GET /listings
   # GET /listings.json
@@ -27,25 +28,18 @@ class ListingsController < ApplicationController
     @listing = Listing.new
   end
 
-  def edit1
-    @listings = Listing.all
-    @listing = Listing.find(params[:id])
-  end
-
   def options
     @listings = Listing.all
-    @listing = nil
-    # @current_listing = Listing.find_by(creative_name: params[:creative_name])
+    if params[:id]
+      @listing = Listing.find(params[:id])
+    end
   end
 
   def setting
     @listings = Listing.all
-    @listing = nil
-  end
-
-  def setting1
-    @listings = Listing.all
-    @listing = Listing.find(params[:id])
+    if params[:id]
+      @listing = Listing.find(params[:id])
+    end
   end
 
   # POST /listings
@@ -83,7 +77,7 @@ class ListingsController < ApplicationController
   def destroy
     @listing.destroy
     respond_to do |format|
-      format.html { redirect_to '/listings/options', notice: 'クリエイティブを削除しました。' }
+      format.html { redirect_back fallback_location: root_path, notice: 'クリエイティブを削除しました。' }
       format.json { head :no_content }
     end
   end
