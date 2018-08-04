@@ -1,3 +1,6 @@
+<script type="text/javascript">
+$('p.descrive').html("リスティング広告に対応して表示したいコードを登録して下さい。")
+</script>
 <%= form_with(model: @listing, local: true) do |form| %>
 <div class="listing-code">
 <%= form.text_area :listing_code, :size => "80x10", :class => "listing-code", :required => true %>
@@ -9,7 +12,3 @@
   <button type="submit" name="button" class="btn btn-primary">保存</button>
 </div>
 <% end %>
-
-<script type="text/javascript">
-$('p.descrive').html("リスティング広告に対応して表示したいコードを登録して下さい。")
-</script>

@@ -54,33 +54,34 @@
         </div>
       </div>
     <% end %>
+    <script type="text/javascript">
+      // $(document).ready(function ()
+        if (window.location.pathname == "/") {
+          $('#list-tag').addClass('active')
+        }
+        // listのactive化
+        var url = $(location).attr('pathname').split('/')
+        $('.list-group-item').each(function () {
+          if ($(this).attr('value') == url[2]) {
+            $(this).addClass('active')
+          }
+        })
+        // リストクリックで画面遷移
+        $('.list-group-item').on('click', function () {
+          window.location.href = '/listings/' + $(this).attr('value')
+        })
+        if (window.location.search != null) {
+          $('.list-group-item').addClass('selected')
+        }
+        // セレクターの挙動
+      // })
+      // $(window).load(function(){
+        $(document).on('change', '#selector', function () {
+          if ($(this).val()) {
+            window.location.search = 'id=' + $(this).val()
+          }
+        })
+      // });
+    </script>
   </body>
 </html>
-
-<script type="text/javascript">
-  if (window.location.pathname == "/"){
-    $('#list-tag').addClass('active')
-  }
-  // listのactive化
-  var url = $(location).attr('pathname').split('/')
-  $('.list-group-item').each(function () {
-    if ($(this).attr('value') == url[2]) {
-      $(this).addClass('active')
-    }
-  })
-  // リストクリックで画面遷移
-  $('.list-group-item').on('click', function () {
-    window.location.href = '/listings/' + $(this).attr('value')
-  })
-  if (window.location.search != null) {
-    $('.list-group-item').addClass('selected')
-  }
-  // セレクターの挙動
-  $(document).ready(function () {
-    $(document).on('click', '#selector', function () {
-      if ($(this).val()) {
-        window.location.search = 'id=' + $(this).val()
-      }
-    })
-  })
-</script>

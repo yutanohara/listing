@@ -1,3 +1,6 @@
+<script type="text/javascript">
+  $('p.descrive').html("広告URLとクリエイティブを紐付けてください。<br/>「囲うdivタグ」を可変させたいエリアに囲うと、囲った中は非表示となり、代わりに対応するクリエイティブが表示されます。")
+</script>
 <div class="creative-name">
   <p>クリエイティブ名</p>
   <select name="creative" id="selector">
@@ -14,7 +17,3 @@
   </select><br><br>
 </div>
 <%= render partial: 'set', listing: @listing %>
-
-<script type="text/javascript">
-  $('p.descrive').html("広告URLとクリエイティブを紐付けてください。<br/>「囲うdivタグ」を可変させたいエリアに囲うと、囲った中は非表示となり、代わりに対応するクリエイティブが表示されます。")
-</script>

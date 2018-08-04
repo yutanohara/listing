@@ -1,3 +1,6 @@
+<script type="text/javascript">
+  $('p.descrive').html("編集したいクリエイティブを選択し、編集することが可能です。")
+</script>
 <div class="creative-name">
   <p>クリエイティブ名</p>
   <select name="creative" id="selector">
@@ -14,7 +17,3 @@
   </select><br><br>
 </div>
 <%= render partial: 'option', listing: @listing %>
-
-<script type="text/javascript">
-  $('p.descrive').html("編集したいクリエイティブを選択し、編集することが可能です。")
-</script>
