@@ -29,7 +29,7 @@
         <div class="row">
           <h1 class="text-center">リスティング可変君</h1>
           <ul class="list-inline list-group">
-            <li class="list-group-item" value="tag">初期タグ</li>
+            <li id="list-tag" class="list-group-item" value="tag">初期タグ</li>
             <li class="list-group-item" value="registar">クリエイティブ登録</li>
             <li class="list-group-item" value="options">クリエイティブ編集</li>
             <li class="list-group-item" value="setting">セッティング</li>
@@ -58,6 +58,9 @@
 </html>
 
 <script type="text/javascript">
+  if (window.location.pathname == "/"){
+    $('#list-tag').addClass('active')
+  }
   // listのactive化
   var url = $(location).attr('pathname').split('/')
   $('.list-group-item').each(function () {

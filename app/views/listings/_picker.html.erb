@@ -10,14 +10,12 @@
   <!-- 5.モーダルのボディ -->
   <div class="modal-body">
     <textarea id="copyForm" rows="8" cols="80" readonly="readonly" style="width:100%;margin:auto;">
-      (function() { const alink = document.getElementsByTagName('A'); for (let i=0; i < alink.length; i++) { alink[i].href = "javascript:void(0)"; } alert('可変させたい要素をクリックして選択してください\nもう一度クリックするとデータを送信します'); function color(content) {
-      content.style['background-color'] = 'rgb(255,0,0)'; } function uncolor(content) { if (content) content.style['background-color'] = ''; } function hash(str) { return str.substr(0, 10); } function send(data) { const url = 'http://localhost:3000/apis';
-      if (!data) { alert('要素が選択されてません'); return; } function XMLHttpRequestCreate() { try { return new XMLHttpRequest(); } catch (e) {} try { return new ActiveXObject('MSXML2.XMLHTTP.6.0'); } catch (e) {} try { return new
-      ActiveXObject('MSXML2.XMLHTTP.3.0'); } catch (e) {} try { return new ActiveXObject('MSXML2.XMLHTTP'); } catch (e) {} return null; } const xhr = XMLHttpRequestCreate(); xhr.onreadystatechange = () => { if (xhr.readyState === 4 && xhr.status >= 200 &&
-      xhr.status < 300) { const text = JSON.stringify(data); alert('次に表示されるJSONをセッティングのJSON欄にペースとしてください。'); alert(text); } }; xhr.open('POST', url); xhr.setRequestHeader('Content-Type', 'application/json'); xhr.send(data); } let content = null; let data =
-      {}; document.addEventListener('click', e => { if (content === e.target) { uncolor(content); if (!window.confirm('要素: ' + content.outerHTML.substr(0, 10) + '...を可変にしますか?')) { return; } const location = []; let now = content; while (now.parentElement)
-      { for (let i = 0; i < now.parentElement.children.length; i++) { if (now.parentElement.children[i] === now) { now = now.parentElement; location.unshift(i); break; } } } const h = hash(content.innerHTML); const data = { host: window.location.origin,
-      path: window.location.pathname, hash_i: h, location: location }; send(JSON.stringify(data)); } else { uncolor(content); content = e.target; color(content); } }); })();
+      (function() { const alink = document.getElementsByTagName('A'); for (let i = 0; i < alink.length; i++) { alink[i].href = "javascript:void(0)"; } alert('可変させたい要素をクリックして選択してください\nもう一度クリックするとデータを送信します'); function color(content) {
+      content.style['background-color'] = 'rgb(255,0,0)'; } function uncolor(content) { if (content) content.style['background-color'] = ''; } function hash(str) { return str.substr(0, 10); } let content = null; let data = {};
+      document.addEventListener('click', e => { if (content === e.target) { uncolor(content); if (!window.confirm('要素: ' + content.outerHTML.substr(0, 10) + '...を可変にしますか?')) { return; } const location = []; let now = content; while (now.parentElement) {
+      for (let i = 0; i < now.parentElement.children.length; i++) { if (now.parentElement.children[i] === now) { now = now.parentElement; location.unshift(i); break; } } } const h = hash(content.innerHTML); var data = { host: window.location.origin, path:
+      window.location.pathname, hash_i: h, location: location }; data = JSON.stringify(data); alert('次に表示されるJSONをセッティングのJSON欄にペースとしてください。'); prompt("Ctl+CでコピーしてJSON欄に貼り付けてください", data); } else { uncolor(content); content = e.target; color(content); } });
+      })();
     </textarea>
   </div>
   <!-- 6.モーダルのフッタ -->
