@@ -23,12 +23,5 @@ Rails.application.routes.draw do
     get 'sign_out', to: 'users/sessions#destroy'
   end
 
-  namespace :apis do
-    get '/', action: 'index'
-    post '/', action: 'create'
-  end
-
-  resources :apis, only: [:show]
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
