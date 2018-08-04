@@ -42,7 +42,8 @@
   function script(conf) {
     for(let i = 0; i < conf.length; i++) {
       if(!conf[i].kahen_selector) continue
-      const k = conf[i].kahen_selector.replace(/\\/g, '');
+      var k = conf[i].kahen_selector.replace(/\\/g, '');
+      k = JSON.parse(k)
       if (window.location.origin !== k.host || window.location.pathname !== k.path) {
         // errorReport('URLが異なります')
         continue
