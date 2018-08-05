@@ -41,6 +41,7 @@
 
   function script(conf) {
     for(let i = 0; i < conf.length; i++) {
+      if(!conf[i].on_off) continue
       if(!conf[i].kahen_selector) continue
       var k = conf[i].kahen_selector.replace(/\\/g, '');
       k = JSON.parse(k)
@@ -80,7 +81,6 @@
       if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) {
         const text = JSON.parse(xhr.responseText)
         c(text)
-        // c(JSON.parse(xhr.responseText.kahen_selector))
       }
     }
     xhr.open('GET', url)

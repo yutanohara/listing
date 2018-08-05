@@ -47,6 +47,7 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
     @listing.listing_user = current_user.user_id
+    @listing.on_off = true
     respond_to do |format|
       if @listing.save
         format.html { redirect_back fallback_location: root_path, notice: 'クリエイティブを登録しました。' }
@@ -91,6 +92,6 @@ class ListingsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def listing_params
-    params.require(:listing).permit(:listing_code, :creative_name, :ad_name, :ad_parameter, :kahen_selector)
+    params.require(:listing).permit(:listing_code, :creative_name, :ad_name, :ad_parameter, :kahen_selector, :on_off)
   end
 end

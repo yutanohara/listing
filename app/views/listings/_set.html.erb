@@ -25,25 +25,30 @@
   </div>
   <div class="toggle-button">
     <p>On/Off</p>
-    <div class="btn-group btn-toggle">
-      <button type="button" class="btn btn-primary">ON</button>
-      <button type="button" class="btn btn-default">OFF</button>
+    <div class="btn-group btn-toggle" data-toggle="buttons">
+      <label class="btn btn-secondary1 btn-default"><%= form.radio_button :on_off, true, class: "bradio" %>ON</label>
+      <lable class="btn btn-secondary2 btn-default"><%= form.radio_button :on_off, false, class: "bradio" %>OFF</label>
     </div>
   </div>
   <div class="right-form">
     <div class="save-delete">
-      <button name="button" class="btn btn-primary save-setting">保存</button>
+      <button class="btn btn-primary save-setting">保存</button>
     </div>
   </div>
 </div>
 <% end %>
 
 <script type="text/javascript">
+if ($('.btn-secondary1').find('.bradio').is(':checked')) {
+  $('.btn-secondary2').removeClass('btn-primary')
+  $('.btn-secondary1').addClass('btn-primary')
+  $('.btn-secondary1').addClass('active')
+} else {
+  $('.btn-secondary1').removeClass('btn-primary')
+  $('.btn-secondary2').addClass('btn-primary')
+  $('.btn-secondary2').addClass('active')
+}
 $('.btn-toggle').on('click', function () {
-  $(this).find('.btn').toggleClass('active');
-  if ($(this).find('.btn-primary').size() > 0) {
-    $(this).find('.btn').toggleClass('btn-primary');
-  }
-  $(this).find('.btn').toggleClass('btn-default');
+  $('.btn-toggle').find('.btn').toggleClass('btn-primary')
 });
 </script>
