@@ -75,7 +75,7 @@
   }
 
   function get(c) {
-    const url = 'https://listing-kahen.herokuapp.com/listings.json'
+    const url = 'http://listing-kahen.herokuapp.com/listings.json'
     const xhr = XMLHttpRequestCreate()
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) {
