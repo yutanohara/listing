@@ -21,10 +21,11 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: mysql2
-  pool: 5
-  timeout: 5000
-  username: root
-  password: root
-  database: listing_kahenDB
-  socket: /cloudsql/listing-kahen:us-east1:rails-cloudsql-instance
+  url: <%= ENV['DATABASE_URL'] %>
+  # adapter: mysql2
+  # pool: 5
+  # timeout: 5000
+  # username: root
+  # password: root
+  # database: listing_kahenDB
+  # socket: /cloudsql/listing-kahen:us-east1:rails-cloudsql-instance
