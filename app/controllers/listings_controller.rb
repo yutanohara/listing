@@ -32,6 +32,9 @@ class ListingsController < ApplicationController
     @listings = Listing.all
     if params[:id]
       @listing = Listing.find(params[:id])
+      if @listing.listing_user != current_user.user_id
+        redirect_back fallback_location: root_path, notice: '権限がありません'
+      end
     end
   end
 
@@ -39,6 +42,9 @@ class ListingsController < ApplicationController
     @listings = Listing.all
     if params[:id]
       @listing = Listing.find(params[:id])
+      if @listing.listing_user != current_user.user_id
+        redirect_back fallback_location: root_path, notice: '権限がありません'
+      end
     end
   end
 
