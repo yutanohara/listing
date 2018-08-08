@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    redirect_to "/users/sign_up"
   end
 
   def show
