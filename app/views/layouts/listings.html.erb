@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript" src="/listings/data.js"></script>
   </head>
 
   <body>
@@ -23,11 +24,17 @@
           <%= link_to "ログアウト", sign_out_path %>
         </nav>
       </header>
-      <p class="notice"><%= notice %></p>
+      <p class="notice">
+        <% unless flash.empty? %>
+          <script type="text/javascript">
+            toastr.success('<%= notice %>')
+          </script>
+        <% end %>
+      </p>
       <p class="alert"><%= alert %></p>
       <div class="container">
         <div class="row">
-          <h1 class="text-center">リスティング可変君</h1>
+          <h1 class="text-center" style="visibility: hidden;">リスティング可変君</h1>
           <ul class="list-inline list-group">
             <li id="list-tag" class="list-group-item" value="tag">初期タグ</li>
             <li class="list-group-item" value="registar">クリエイティブ登録</li>
@@ -56,31 +63,31 @@
     <% end %>
     <script type="text/javascript">
       // $(document).ready(function ()
-        if (window.location.pathname == "/") {
-          $('#list-tag').addClass('active')
+      if (window.location.pathname == "/") {
+        $('#list-tag').addClass('active')
+      }
+      // listのactive化
+      var url = $(location).attr('pathname').split('/')
+      $('.list-group-item').each(function () {
+        if ($(this).attr('value') == url[2]) {
+          $(this).addClass('active')
         }
-        // listのactive化
-        var url = $(location).attr('pathname').split('/')
-        $('.list-group-item').each(function () {
-          if ($(this).attr('value') == url[2]) {
-            $(this).addClass('active')
-          }
-        })
-        // リストクリックで画面遷移
-        $('.list-group-item').on('click', function () {
-          window.location.href = '/listings/' + $(this).attr('value')
-        })
-        if (window.location.search != null) {
-          $('.list-group-item').addClass('selected')
+      })
+      // リストクリックで画面遷移
+      $('.list-group-item').on('click', function () {
+        window.location.href = '/listings/' + $(this).attr('value')
+      })
+      if (window.location.search != null) {
+        $('.list-group-item').addClass('selected')
+      }
+      // セレクターの挙動 }) $(window).load(function(){
+      $(document).on('change', '#selector', function () {
+        if ($(this).val()) {
+          window.location.search = 'id=' + $(this).val()
         }
-        // セレクターの挙動
-      // })
-      // $(window).load(function(){
-        $(document).on('change', '#selector', function () {
-          if ($(this).val()) {
-            window.location.search = 'id=' + $(this).val()
-          }
-        })
+      })
+      document.body.style.visibility = "hidden"
+      
       // });
     </script>
   </body>
