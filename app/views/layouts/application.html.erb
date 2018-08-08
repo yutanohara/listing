@@ -27,8 +27,24 @@
         <% end %>
       </nav>
     </header>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <p class="notice">
+      <% unless flash.empty? %>
+        <%if notice %>
+          <script type="text/javascript">
+            toastr.success('<%= notice %>')
+          </script>
+        <% end %>
+      <% end %>
+    </p>
+    <p class="alert">
+      <% if alert %>
+        <% unless flash.empty? %>
+          <script type="text/javascript">
+            toastr.error('<%= alert %>')
+          </script>
+        <% end %>
+      <% end %>
+    </p>
     <%= yield %>
   </body>
 </html>

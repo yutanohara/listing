@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: %i[show edit update destroy]
-  before_action :authenticate_user!, except: [:tag]
+  before_action :authenticate_user!, except: %i[tag index]
   protect_from_forgery except: [:data]
 
   # GET /listings
@@ -84,7 +84,7 @@ class ListingsController < ApplicationController
   def destroy
     @listing.destroy
     respond_to do |format|
-      format.html { redirect_back fallback_location: root_path, notice: 'クリエイティブを削除しました。' }
+      format.html { redirect_to "/listings/options", notice: 'クリエイティブを削除しました。' }
       format.json { head :no_content }
     end
   end
