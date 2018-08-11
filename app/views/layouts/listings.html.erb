@@ -10,14 +10,6 @@
   </head>
 
   <body>
-    <p class="notice">
-      <% unless flash.empty? %>
-        <script type="text/javascript">
-          toastr.success('<%= notice %>')
-        </script>
-      <% end %>
-    </p>
-    <p class="alert"><%= alert %></p>
     <% if user_signed_in? %>
       <header>
         <a class="logo" href="/">
@@ -32,6 +24,16 @@
           <%= link_to "ログアウト", sign_out_path %>
         </nav>
       </header>
+      <p class="notice">
+        <% if notice %>
+          <% unless flash.empty? %>
+            <script type="text/javascript">
+              toastr.success('<%= notice %>')
+            </script>
+          <% end %>
+        <% end %>
+      </p>
+      <p class="alert"><%= alert %></p>
       <div class="container">
         <div class="row">
           <h1 class="text-center">リスティング可変君</h1>
@@ -50,6 +52,16 @@
         </div>
       </div>
     <% else %>
+      <p class="notice">
+        <% if notice %>
+          <% unless flash.empty? %>
+            <script type="text/javascript">
+              toastr.success('<%= notice %>')
+            </script>
+          <% end %>
+        <% end %>
+      </p>
+      <p class="alert"><%= alert %></p>
       <div class="container">
         <div class="row">
           <h1 class="text-center">リスティング可変君</h1>
