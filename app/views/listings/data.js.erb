@@ -41,7 +41,7 @@
 
   function script(conf) {
     for(let i = 0; i < conf.length; i++) {
-      if(!conf[i].on_off) continue
+      // if(!conf[i].on_off) continue
       if(!conf[i].kahen_selector) continue
       var k = conf[i].kahen_selector.replace(/\\/g, '');
       k = JSON.parse(k)
@@ -75,7 +75,7 @@
   }
 
   function get(c) {
-    const url = 'http://localhost:3000/listings.json'
+    const url = 'https://listing-kahen.herokuapp.com/listings.json'
     const xhr = XMLHttpRequestCreate()
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) {
