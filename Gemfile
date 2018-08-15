@@ -29,6 +29,7 @@ gem 'bootstrap-sass', '3.2.0.0'
 gem 'jquery-rails'
 gem 'mysql2'
 gem 'pg', group: :production
+gem 'toastr-rails'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
