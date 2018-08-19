@@ -30,6 +30,7 @@ gem 'jquery-rails'
 gem 'mysql2'
 gem 'pg', group: :production
 gem 'toastr-rails'
+gem 'rack-cors'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
