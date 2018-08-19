@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: %i[show edit update destroy]
   before_action :authenticate_user!, except: %i[tag index data]
-  protect_from_forgery except: [:data]
+  protect_from_forgery except: [:data, :index]
 
   # GET /listings
   # GET /listings.json
