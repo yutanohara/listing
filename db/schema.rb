@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_04_040012) do
+ActiveRecord::Schema.define(version: 2018_08_04_035032) do
 
   create_table "listings", force: :cascade do |t|
     t.string "listing_code"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2018_08_04_040012) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "listing_user"
-    t.boolean "on_off"
+    t.string "on_off"
   end
 
   create_table "users", force: :cascade do |t|

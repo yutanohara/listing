@@ -1,4 +1,10 @@
 (function() {
+  $(document).ready(function () {
+    $('.kahenkun').css('visibility','hidden');
+    var showIt = function(){$('.kahenkun').css('visibility','visible');}
+    setTimeout(showIt, 50);
+
+  })
   if (window['isActiveListingReplacer']) return
   window['isActiveListingReplacer'] = true
 
@@ -75,7 +81,7 @@
   }
 
   function get(c) {
-    const url = 'https://listing-kahen.herokuapp.com/listings.json'
+    const url = 'http://localhost:3000/listings.json'
     const xhr = XMLHttpRequestCreate()
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) {
